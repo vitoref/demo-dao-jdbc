@@ -32,6 +32,8 @@ public class Program2 {
 		dep.setName("Games");
 		departmentDao.update(dep);
 		
+		System.out.println("=== TEST 5: department delete ===");
+		departmentDao.deleteById(8);
 	}
 
 }

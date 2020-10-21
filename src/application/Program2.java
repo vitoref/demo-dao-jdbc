@@ -21,11 +21,11 @@ public class Program2 {
 			System.out.println(obj);
 		}
 		
-		/*
+		
 		System.out.println("=== TEST 3: department insert ===");
 		Department insertDep = new Department(null, "Sports");
 		departmentDao.insert(insertDep);
-		*/
+		System.out.println(insertDep.getId());
 		
 		System.out.println("=== TEST 4: department update ===");
 		dep = departmentDao.findById(7);
@@ -33,7 +33,7 @@ public class Program2 {
 		departmentDao.update(dep);
 		
 		System.out.println("=== TEST 5: department delete ===");
-		departmentDao.deleteById(8);
+		//departmentDao.deleteById(8);
 	}
 
 }

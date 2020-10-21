@@ -38,6 +38,11 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 			throw new DbException("Insertion failed!");
 		}
 		else {
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()) {
+				int id = rs.getInt(1);
+				obj.setId(id);
+			}
 			System.out.println("Insertion confirmed!");
 		}
 		}

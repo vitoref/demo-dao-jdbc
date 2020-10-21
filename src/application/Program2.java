@@ -20,10 +20,18 @@ public class Program2 {
 		for (Department obj : list) {
 			System.out.println(obj);
 		}
-	
+		
+		/*
 		System.out.println("=== TEST 3: department insert ===");
 		Department insertDep = new Department(null, "Sports");
 		departmentDao.insert(insertDep);
+		*/
+		
+		System.out.println("=== TEST 4: department update ===");
+		dep = departmentDao.findById(7);
+		dep.setName("Games");
+		departmentDao.update(dep);
+		
 	}
 
 }

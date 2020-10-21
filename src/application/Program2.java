@@ -20,6 +20,10 @@ public class Program2 {
 		for (Department obj : list) {
 			System.out.println(obj);
 		}
+	
+		System.out.println("=== TEST 3: department insert ===");
+		Department insertDep = new Department(null, "Sports");
+		departmentDao.insert(insertDep);
 	}
 
 }

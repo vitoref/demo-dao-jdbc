@@ -1,7 +1,6 @@
 package model.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +13,7 @@ import java.util.Map;
 
 import db.DB;
 import db.DbException;
+import db.DbIntegrityException;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -101,8 +101,31 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(
+					"DELETE FROM seller "
+					+ "WHERE Id = ?"
+					);
+			
+			st.setInt(1, id);
+			
+			int rows = st.executeUpdate();
+		
+			if (rows == 0) {
+				System.out.println("Seller " + id + " don't exist");
+			}
+			else {
+				System.out.println("Delete completed!");
+			}
+		
+		}
+		catch (SQLException e) {
+			throw new DbIntegrityException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
